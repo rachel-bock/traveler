@@ -1,4 +1,4 @@
-# Webpack Starter Kit
+# Traveler, The Travel Tracker
 
 ## Clone This Repo
 
