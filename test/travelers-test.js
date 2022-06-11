@@ -25,7 +25,7 @@ describe('Travelers', function () {
   });
 
   it('should have a property containing all travelers', () => {
-    expect(theTravelers.travelers).to.deep.equal(sampleTravelers.travelers);
+    expect(theTravelers.travelers).to.deep.equal(travelers.travelers);
   });
 
   it('should return information about a single traveler', () => {

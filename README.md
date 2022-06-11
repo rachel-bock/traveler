@@ -5,7 +5,6 @@
 
 Sources:
 
-Background Photo: https://unsplash.com/@iambrettzeck
 
 
 
