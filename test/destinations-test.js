@@ -39,4 +39,9 @@ describe('Destinations', function () {
     costOfLodging = theDestinations.calculateLodgingCost(destinationID, days);
     expect(costOfLodging).to.equal(625);
   });
+
+  it('should be able to calculate the total cost of the trip', () => {
+    let totalTripCost = theDestinations.calculateTripCost(destinationID, people, days);
+    expect(totalTripCost).to.equal(4625);
+  });
 });
