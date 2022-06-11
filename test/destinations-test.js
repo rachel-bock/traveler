@@ -22,7 +22,7 @@ describe('Destinations', function () {
     expect(Destinations).to.be.a('function');
   });
 
-  it('should be an instance of Trips', () => {
+  it('should be an instance of Destinations', () => {
     expect(theDestinations).to.be.instanceOf(Destinations);
   });
 

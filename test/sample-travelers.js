@@ -248,10 +248,17 @@ const travelers = {
     "id": 50,
     "name": "Morey Flanders",
     "travelerType": "foodie"
-  }
-  ]
+  }]
 }
 
+const traveler42 = [
+  {
+    "id": 42,
+    "name": "Mignonne Thame",
+    "travelerType": "photographer"
+  }]
+
 export {
-  travelers
+  travelers,
+  traveler42
 }
