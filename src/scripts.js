@@ -4,9 +4,16 @@
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/styles.css';
 
+
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 import './images/dashboard-background.jpg'
+import './images/one.jpg'
+import './images/two.jpg'
+import './images/three.jpg'
+import './images/four.jpg'
+import './images/five.jpg'
+import './images/six.jpg'
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
