@@ -14,6 +14,7 @@ import Trips from './Trips';
 
 import './images/turing-logo.png'
 import './images/map-banner.png'
+import './images/mapBanner.png'
 import './images/one.jpg'
 import './images/two.jpg'
 import './images/three.jpg'
@@ -31,7 +32,7 @@ const getRandomID = () => {
 
 const travelerID = getRandomID();
 
-function getData() {
+const getData = () => {
   promise.then(data => {
     travelers = data[0];
     trips = data[1];
