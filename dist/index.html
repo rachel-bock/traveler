@@ -12,44 +12,39 @@
     <div class="banner">
     </div>
     <section class="heading-section">
-      <h1>The Traveler Custom Adventures</h1>
-      <h2>Welcome <span class="traveler-name">Nate Ewert-Krocker</span>!</h2>
+      <h1>Welcome <span class="traveler-name">Lillian Jane</span>!</h1>
       <div>Total Spent This Year: $<span class="total-spent"></span></div>
     </section>
   </nav>
   <main class="card-wrapper">
-    
-
-   
-    
-    <div class="trip-card add-new-trip">
-      <img class="card-img" src='https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1971&q=80'>
-      <div class="card-views">
-          <span class="pending-trip-heading hidden">Adventure Pending</span>
+    <form class="trip-card add-new-trip">
+      <div class="add-new-trip-header"><strong>Add A New Adventure:</strong></div>
+      <label for="trip-date">Beginning On Date:</label><br>
+      <input type="date" id="trip-date" placeholder="YYYY/MM/DD" required /><br>
+      <label for="trip-duration">Number of Days:</label><br>
+      <input type="number" id="trip-duration" placeholder="Number of Days" required /><br>
+      <label for="trip-travelers">Number of Travelers:</label><br>
+      <input type="number" id="trip-travelers" placeholder="Number of Travelers" required /><br>
+      <label for="trip-destination">Destination: </label>
+      <select name="trip-destination" id="trip-destination"></select>
+      <br>
+      <br>
+      <div class="costs">
+        <strong>ESTIMATED TOTAL COSTS: $<span class="total-cost"></span>
+        </strong>
+        <br>
+        Lodging: 
+          $<span class="lodging-cost"></span><br>
+        Flights: 
+          $<span class="flights-cost"></span><br>
       </div>
-      <div class="card-info">
-        Destination: <br>
-        <h2><span class="card-destination">Toyko, Japan</span></h2>
-        <br>
-        People Traveling: 
-        <div class="people-traveling">
-          <h4>4</h4>
-        </div> <!-- closes people-traveling -->
-        <br>
-        Travel Dates: <br>
-        <div class="travel-dates">
-          <h4>2022/12/28 - 2023/01/17</h4>
-        </div> <!-- closes travel-dates -->
-        <br>
-        <div class="costs">
-          <strong>ESTIMATED TOTAL COSTS: $<span class="total-cost"></span></strong>
-          <br>
-          Lodging: $<span class="lodging-cost"></span><br>
-          Flights: $<span class="flights-cost"></span><br>
-        </div>
-      </div> <!-- closes card-info -->
-    </div><!-- closes class="trip-card add-new-trip"   -->
-
+      <br>
+      <button type="submit" id="add-new-trip-button" class="disable" disabled >Save</button>
+    </form>
+    
+       
+    
+    
 <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
 </body>
