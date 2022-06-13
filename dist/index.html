@@ -12,31 +12,33 @@
     <div class="banner">
     </div>
     <section class="heading-section">
-      <h1>Welcome <span class="traveler-name">Lillian Jane</span>!</h1>
+      <h1><span class="traveler-greeting">Welcome!</span></h1>
       <div>Total Spent This Year: $<span class="total-spent"></span></div>
     </section>
   </nav>
   <main class="card-wrapper">
     <form class="trip-card add-new-trip">
-      <div class="add-new-trip-header"><strong>Add A New Adventure:</strong></div>
-      <label for="trip-date">Beginning On Date:</label><br>
-      <input type="date" id="trip-date" placeholder="YYYY/MM/DD" required /><br>
-      <label for="trip-duration">Number of Days:</label><br>
-      <input type="number" id="trip-duration" placeholder="Number of Days" required /><br>
-      <label for="trip-travelers">Number of Travelers:</label><br>
-      <input type="number" id="trip-travelers" placeholder="Number of Travelers" required /><br>
+      <div class="add-new-trip-header"><h3><strong>Add A New Adventure:</strong></h3></div>
+      <br>
       <label for="trip-destination">Destination: </label>
       <select name="trip-destination" id="trip-destination"></select>
       <br>
+      <label for="trip-travelers">Number of Travelers:</label><br>
+      <input type="number" id="trip-travelers" placeholder="Number of Travelers" required /><br>
+      <label for="trip-date">Beginning On Date:</label><br>
+      <input type="date" id="trip-date" placeholder="YYYY/MM/DD" required /><br>
+      <label for="trip-duration">Number of Days:</label><br>
+      <input type="number" id="trip-duration" placeholder="Number of Days" required /><br>    
       <br>
       <div class="costs">
-        <strong>ESTIMATED TOTAL COSTS: $<span class="total-cost"></span>
+        <strong>ESTIMATED <br>
+          TOTAL COSTS: $<span class="new-total-cost"></span>
         </strong>
         <br>
         Lodging: 
-          $<span class="lodging-cost"></span><br>
+          $<span class="new-lodging-cost"></span><br>
         Flights: 
-          $<span class="flights-cost"></span><br>
+          $<span class="new-flights-cost"></span><br>
       </div>
       <br>
       <button type="submit" id="add-new-trip-button" class="disable" disabled >Save</button>

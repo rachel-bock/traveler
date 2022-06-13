@@ -11,8 +11,8 @@ html, body {
 }
 
 img {
-  /* width: 25vw; */
   height: 25vh;
+  border-radius: 5%;
 }
 
 form {
@@ -68,7 +68,7 @@ main {
   height: 100%;
   width: 100%;
   row-gap: 10%;
-  column-gap: 10%;
+  column-gap: 5%;
 }
 
 .card-wrapper {
@@ -147,4 +147,8 @@ main {
 
 .hidden {
   display: none !important;
+}
+
+.disable {
+  cursor: not-allowed;
 }
