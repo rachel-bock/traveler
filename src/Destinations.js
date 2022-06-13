@@ -5,12 +5,12 @@ class Destinations {
 
   calculateFlightCostPerPerson(destinationID, numOfPeople) {
     let destination = this.destinations.filter(location => location.id === destinationID);
-    return destination[0].estimatedFlightCostPerPerson * numOfPeople;
+    return destination[0].estimatedFlightCostPerPerson * numOfPeople * 1.1;
   }
 
   calculateLodgingCost(destinationID, numOfDays) {
     let destination = this.destinations.filter(location => location.id === destinationID);
-    return destination[0].estimatedLodgingCostPerDay * numOfDays;
+    return destination[0].estimatedLodgingCostPerDay * numOfDays * 1.1;
   }
 
   calculateTripCost(destinationID, people, days) {

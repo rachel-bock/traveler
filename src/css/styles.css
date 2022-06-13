@@ -4,27 +4,40 @@
   color: black;  
 }
 
+
 html, body {
   height: 100vh;
   width: 100vw;
+}
+
+img {
+  height: 25vh;
+  border-radius: 5%;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 nav {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #2B2B2B;
+  background-color: white;
   color: #6A6A6A;
   width: 100vw;
-  height: 25vh;
+  height: 30vh;
 }
 
 h1 {
   margin: 15px;
 }
 
-.navigation-bar {
-  height: 100%;
+.banner {
+  height: 75%;
 
   /* with destinations */
   background-image: url('../images/mapBanner.png'); 
@@ -54,53 +67,35 @@ main {
   grid-template-columns: repeat(3, 1fr);
   height: 100%;
   width: 100%;
-  row-gap: 5%;
-  column-gap: 3%;
+  row-gap: 10%;
+  column-gap: 5%;
 }
 
 .card-wrapper {
   margin: 1%;
+
 }
 
-.card {
+.trip-card {
   box-shadow: 0 0px 0 #FFFFFF, 0 1px 10px rgba(0,0,0,0.5);
   width: 100%;
   height: 100%;
   border-radius:5%;
-}
-
-/* .url-box {
-  background-color: lightgrey;
-  overflow-wrap:break-word;
-  margin: 15px;
-} */
-
-/* .card-date {
-  color:#777779;
-} */
-
-.attachments-number {
-  font-size: xx-large;
-  color:#2995CE;
+  padding: 15px;
 }
 
 .card-img {
-  background-size:cover; 
+  background-size: contain;
   background-position: center center;
-  height: 25%;
+  height: 30%;
   width: 100%;
-  color: #2995CE;
-  font-weight: bolder;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
 }
 
-.one > .card-img {
-  background-image: url("../images/one.jpg");  
-}
+/* .add-new-trip > .card-img {
+  background-image: url("https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1971&q=80");  
+} */
 
-.two > .card-img {
+/* .two > .card-img {
   background-image: url("../images/two.jpg");
 }
 
@@ -134,7 +129,7 @@ main {
   margin: 25px;
   font-size: xx-large;
 
-}
+} */
 
 .views-icon {
   background-color: white;
@@ -147,4 +142,13 @@ main {
 
 .card-info {
   margin-left: 15px;
+  margin-top: 50px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.disable {
+  cursor: not-allowed;
 }
