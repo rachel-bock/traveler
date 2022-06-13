@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import './css/styles.css';
 import {
   promise
@@ -8,18 +9,6 @@ import Trips from './Trips';
 
 import './images/map-banner.png';
 import './images/mapBanner.png';
-
-let cardWrapper = document.querySelector('.card-wrapper');
-let totalSpent = document.querySelector('.total-spent');
-let newTripDate = document.getElementById('trip-date');
-let newTripDuration = document.getElementById('trip-duration');
-let newTripTravelers = document.getElementById('trip-travelers');
-let newTripDestination = document.getElementById('trip-destination');
-let newTripSaveButton = document.getElementById('add-new-trip-button');
-let travelerGreeting = document.querySelector('.traveler-greeting');
-let newTotalCost = document.querySelector('.new-total-cost');
-let newLodgingCost = document.querySelector('.new-lodging-cost');
-let newFlightsCost = document.querySelector('.new-flights-cost');
 
 let destinations;
 let travelers;
@@ -37,34 +26,36 @@ const totalSpentByYear = () => {
   individual.trips.forEach(trip => {
     let myDate = new Date(trip.date);
     if (myDate.getFullYear() === 2022) {
-      spent += destinations.calculateTripCost(trip.destinationID, trip.travelers, trip.duration);
+      spent += destinations.calculateTripCost(
+        trip.destinationID, trip.travelers, trip.duration);
     }
   });
   totalSpent.innerText = spent.toFixed(2);
 };
 
 const updateEstimatedCosts = () => {
-  newTotalCost.innerText =  'monkey' //destinations.calculateTripCost(8, 2, 5).toFixed(2);
-  newLodgingCost.innerHTML = `Why doesn't this work?`;
-  newFlightsCost.innerHTML = `Banana`;
+  newTotalCost.innerText =  destinations.calculateTripCost(newTripDestination.value, newTripTravelers.value, newTripDuration.value).toFixed(2);
 };
 
 const checkNewTripFormFields =  () => {
-  console.log(newTripDestination.value);
   if (newTripDate.value !== '' && newTripDuration.value !== '' && 
     newTripDestination.value !== '' && newTripTravelers.value !== '') {
     newTripSaveButton.classList.remove('disable');
     newTripSaveButton.disabled = false;
+    updateEstimatedCosts();
+    newCosts.classList.remove("hidden");
   } else {
     newTripSaveButton.classList.add('disable');
-    newTripSaveButton.disabled = true;
+    newTripSaveButton.disabled = true;    
   }
-  updateEstimatedCosts();
 }
 
 const populateDestinationsDropdown = () => {
   // <option value="volvo">Volvo</option>
   newTripDestination.innerHTML = '';
+  destinations.destinations.sort((a, b) => {
+    return a.destination.localeCompare(b.destination);
+  });
   destinations.destinations.forEach(spot => {
     newTripDestination.innerHTML += `<option 
       value='${spot.id}'>
@@ -79,6 +70,7 @@ const displayTrips = (tripList) => {
     let dateB = new Date(b.date);
     return dateB - dateA;
   });
+
   tripList.trips.forEach(trip => {
     cardWrapper.innerHTML += `
     <div class="trip-card">
@@ -110,17 +102,20 @@ const displayTrips = (tripList) => {
         <div class="costs">
           <strong>TOTAL COSTS: $
             <span class="total-cost">
-              ${(destinations.calculateTripCost(trip.destinationID, trip.travelers, trip.duration)).toFixed(2)}
+              ${(destinations.calculateTripCost(
+                trip.destinationID, trip.travelers, trip.duration)).toFixed(2)}
             </span>
           </strong>
           <br>
           Lodging: 
             $<span class="lodging-cost">
-              ${(destinations.calculateLodgingCost(trip.destinationID, trip.duration)).toFixed(2)}
+              ${(destinations.calculateLodgingCost(
+                trip.destinationID, trip.duration)).toFixed(2)}
             </span><br>
           Flights: 
             $<span class="flights-cost">
-              ${(destinations.calculateFlightCostPerPerson(trip.destinationID, trip.travelers)).toFixed(2)}
+              ${(destinations.calculateFlightCostPerPerson(
+                trip.destinationID, trip.travelers)).toFixed(2)}
           </span><br>
         </div>
       </div> <!-- closes card-info -->
@@ -147,12 +142,26 @@ const getData = () => {
   });
 };
 
-newTripDate.addEventListener('input', checkNewTripFormFields);
-newTripTravelers.addEventListener('input', checkNewTripFormFields);
-newTripDuration.addEventListener('input', checkNewTripFormFields);
-newTripDestination.addEventListener('input', checkNewTripFormFields);
-newTripSaveButton.addEventListener('click', () => { 
+let cardWrapper = document.querySelector('.card-wrapper');
+let totalSpent = document.querySelector('.total-spent');
+let newTripDate = document.getElementById('trip-date');
+let newTripDuration = document.getElementById('trip-duration');
+let newTripTravelers = document.querySelector('.trip-travelers');
+let newTripDestination = document.getElementById('trip-destination');
+let newTripSaveButton = document.getElementById('add-new-trip-button');
+let travelerGreeting = document.querySelector('.traveler-greeting');
+let newTotalCost = document.querySelector('.new-total-cost');
+let newCosts = document.querySelector('.costs');
+
+newTripDate.addEventListener('keyup', checkNewTripFormFields);
+newTripTravelers.addEventListener('keyup', checkNewTripFormFields);
+newTripDuration.addEventListener('keyup', checkNewTripFormFields);
+newTripDestination.addEventListener('input', checkNewTripFormFields);     // trip duration <= 0, form fields invalid entries
+newTripSaveButton.addEventListener('click', () => {                       // departure dates in the past, # travelers 0 or less
+  event.preventDefault();                                                 // No valid destination.
   console.log('What goes here?')
+  // data validations?  POST fetch requests.
+
 });
 
 getData();
