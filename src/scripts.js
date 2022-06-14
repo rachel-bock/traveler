@@ -1,41 +1,20 @@
 /* eslint-disable max-len */
 import './css/styles.css';
 import {
+  fetchToAddTrip,
   promise
 } from './apiCalls';
-import Travelers from './Travelers';
 import Destinations from './Destinations';
+import Travelers from './Travelers';
 import Trips from './Trips';
-
-import './images/map-banner.png';
-import './images/mapBanner.png';
+import './images/map-banner2.png';
 
 let destinations;
-let travelers;
 let individual = {};
+let today;
+let travelers;
 let trips;
 
-const getRandomID = () => {
-  return Math.floor(Math.random() * 50);
-};
-
-const travelerID = getRandomID();
-
-const totalSpentByYear = () => {
-  let spent = 0;
-  individual.trips.forEach(trip => {
-    let myDate = new Date(trip.date);
-    if (myDate.getFullYear() === 2022) {
-      spent += destinations.calculateTripCost(
-        trip.destinationID, trip.travelers, trip.duration);
-    }
-  });
-  totalSpent.innerText = spent.toFixed(2);
-};
-
-const updateEstimatedCosts = () => {
-  newTotalCost.innerText =  destinations.calculateTripCost(newTripDestination.value, newTripTravelers.value, newTripDuration.value).toFixed(2);
-};
 
 const checkNewTripFormFields =  () => {
   if (newTripDate.value !== '' && newTripDuration.value !== '' && 
@@ -48,20 +27,29 @@ const checkNewTripFormFields =  () => {
     newTripSaveButton.classList.add('disable');
     newTripSaveButton.disabled = true;    
   }
-}
+};
 
-const populateDestinationsDropdown = () => {
-  // <option value="volvo">Volvo</option>
-  newTripDestination.innerHTML = '';
-  destinations.destinations.sort((a, b) => {
-    return a.destination.localeCompare(b.destination);
-  });
-  destinations.destinations.forEach(spot => {
-    newTripDestination.innerHTML += `<option 
-      value='${spot.id}'>
-        ${spot.destination}
-      </option>`
-  });
+const createPOSTDataPackage = () => {
+  let output = {};
+  // console.log("Date: ", newTripDate.value);
+  // console.log("Destination: " , newTripDestination.value);
+  // console.log("Duration: ", newTripDuration.value);
+  // console.log("Travelers: ", newTripTravelers.value);
+  // console.log("TravelerID: ", travelerID);
+
+  let myDate = newTripDate.value.split("-");
+  myDate = myDate.join('/');
+
+  output.id = Date.now();
+  output.userID = travelerID;
+  output.destinationID = parseInt(newTripDestination.value);
+  output.travelers = parseInt(newTripTravelers.value);
+  output.date = myDate;
+  output.duration = parseInt(newTripDuration.value);
+  output.status = 'pending';
+  output.suggestedActivities = [];
+  // console.log(output);
+  return output;
 };
 
 const displayTrips = (tripList) => {
@@ -142,6 +130,51 @@ const getData = () => {
   });
 };
 
+const getRandomID = () => {
+  return Math.floor(Math.random() * 50);
+};
+
+const populateDestinationsDropdown = () => {
+  // <option value="volvo">Volvo</option>
+  newTripDestination.innerHTML = '';
+  destinations.destinations.sort((a, b) => {
+    return a.destination.localeCompare(b.destination);
+  });
+  destinations.destinations.forEach(spot => {
+    newTripDestination.innerHTML += `<option 
+      value='${spot.id}'>
+        ${spot.destination}
+      </option>`
+  });
+};
+
+const processNewTripFormClick = () => {
+  event.preventDefault();
+
+  let newTripDetails = createPOSTDataPackage();
+  fetchToAddTrip(newTripDetails);
+  
+
+};
+
+const totalSpentByYear = () => {
+  let spent = 0;
+  individual.trips.forEach(trip => {
+    let myDate = new Date(trip.date);
+    if (myDate.getFullYear() === 2022) {
+      spent += destinations.calculateTripCost(
+        trip.destinationID, trip.travelers, trip.duration);
+    }
+  });
+  totalSpent.innerText = spent.toFixed(2);
+};
+
+const travelerID = getRandomID();
+
+const updateEstimatedCosts = () => {
+  newTotalCost.innerText =  destinations.calculateTripCost(newTripDestination.value, newTripTravelers.value, newTripDuration.value).toFixed(2);
+};
+
 let cardWrapper = document.querySelector('.card-wrapper');
 let totalSpent = document.querySelector('.total-spent');
 let newTripDate = document.getElementById('trip-date');
@@ -157,11 +190,10 @@ newTripDate.addEventListener('keyup', checkNewTripFormFields);
 newTripTravelers.addEventListener('keyup', checkNewTripFormFields);
 newTripDuration.addEventListener('keyup', checkNewTripFormFields);
 newTripDestination.addEventListener('input', checkNewTripFormFields);     // trip duration <= 0, form fields invalid entries
-newTripSaveButton.addEventListener('click', () => {                       // departure dates in the past, # travelers 0 or less
-  event.preventDefault();                                                 // No valid destination.
-  console.log('What goes here?')
-  // data validations?  POST fetch requests.
-
-});
+newTripSaveButton.addEventListener('click', processNewTripFormClick);
+// departure dates in the past, # travelers 0 or less
+// event.preventDefault();                                                 // No valid destination.
+// console.log('What goes here?')
+// data validations?  POST fetch requests.
 
 getData();
