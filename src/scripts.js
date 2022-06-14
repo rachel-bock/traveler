@@ -11,7 +11,7 @@ import './images/map-banner2.png';
 
 let destinations;
 let individual = {};
-let today;
+// let today;
 let travelers;
 let trips;
 
@@ -25,8 +25,15 @@ const checkNewTripFormFields =  () => {
     newCosts.classList.remove("hidden");
   } else {
     newTripSaveButton.classList.add('disable');
-    newTripSaveButton.disabled = true;    
+    newTripSaveButton.disabled = true;
   }
+};
+
+const clearNewTripForm = () => {
+  newTripDate.value = "";
+  newTripDestination.value = 1;
+  newTripDuration.value = "";
+  newTripTravelers.value = "";
 };
 
 const createPOSTDataPackage = () => {
@@ -64,8 +71,8 @@ const displayTrips = (tripList) => {
     <div class="trip-card">
       <div class="card-img">
         <img src='${trip.destination.image}' alt='${trip.destination.alt}' />
-        <span class="trip-heading hidden">
-          <h4>Adventure Pending<h4></span>
+        <span class="trip-heading">
+          <h3>Adventure ${trip.status}<h3></span>
       </div>
       <div class="card-info">
         Destination: <br>
@@ -153,8 +160,17 @@ const processNewTripFormClick = () => {
 
   let newTripDetails = createPOSTDataPackage();
   fetchToAddTrip(newTripDetails);
-  
+  clearNewTripForm();
 
+  newTripDetails.destination = destinations.destinations.find(destination => destination.id === newTripDetails.destinationID);
+  individual.trips.unshift(newTripDetails);
+  cardWrapper.innerHTML = "";
+  displayTrips(individual);
+  totalSpentByYear();
+  newTotalCost.innerText = "";
+  newTripSaveButton.classList.add('disable');
+  newTripSaveButton.disabled = true;    
+  newCosts.classList.add("hidden");
 };
 
 const totalSpentByYear = () => {

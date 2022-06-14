@@ -25,6 +25,10 @@ nav {
   height: 30vh;
 }
 
+h3 {
+  color: green;
+}
+
 h1 {
   margin: 15px;
 }

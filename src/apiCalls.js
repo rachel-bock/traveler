@@ -20,8 +20,8 @@ export function fetchToAddTrip(myTrip) {
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(myTrip)
   })
-  .then(response => checkForErrors(response))
-  .catch(error => console.log(error));
+    .then(response => checkForErrors(response))
+    .catch(error => console.log(error));
 }
 
 export {
