@@ -1,15 +1,28 @@
+/* eslint-disable max-len */
 class Destinations {
   constructor(dataset) {
     this.destinations = dataset.destinations;
   }
 
   calculateFlightCostPerPerson(destinationID, numOfPeople) {
-    let destination = this.destinations.filter(location => location.id === destinationID);
-    return destination[0].estimatedFlightCostPerPerson * numOfPeople * 1.1;
+    if (numOfPeople === '') {
+      numOfPeople = 0;
+    }
+
+    let destination = this.destinations.filter(location => location.id === parseInt(destinationID));
+    
+    if (!destination.length) {
+      return 0;
+    }
+
+    return destination[0].estimatedFlightCostPerPerson * parseInt(numOfPeople) * 1.1;
   }
 
   calculateLodgingCost(destinationID, numOfDays) {
-    let destination = this.destinations.filter(location => location.id === destinationID);
+    let destination = this.destinations.filter(location => location.id === parseInt(destinationID));
+    if (!destination.length) {
+      return 0;
+    }
     return destination[0].estimatedLodgingCostPerDay * numOfDays * 1.1;
   }
 

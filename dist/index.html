@@ -16,37 +16,36 @@
       <div>Total Spent This Year: $<span class="total-spent"></span></div>
     </section>
   </nav>
-  <main class="card-wrapper">
-    <form class="trip-card add-new-trip">
-      <div class="add-new-trip-header"><h3><strong>Add A New Adventure:</strong></h3></div>
-      <br>
-      <label for="trip-destination">Destination: </label>
-      <select name="trip-destination" id="trip-destination"></select>
-      <br>
-      <label for="trip-travelers">Number of Travelers:</label><br>
-      <input type="number" id="trip-travelers" placeholder="Number of Travelers" required /><br>
-      <label for="trip-date">Beginning On Date:</label><br>
-      <input type="date" id="trip-date" placeholder="YYYY/MM/DD" required /><br>
-      <label for="trip-duration">Number of Days:</label><br>
-      <input type="number" id="trip-duration" placeholder="Number of Days" required /><br>    
-      <br>
-      <div class="costs">
-        <strong>ESTIMATED <br>
-          TOTAL COSTS: $<span class="new-total-cost"></span>
-        </strong>
-        <br>
-        Lodging: 
-          $<span class="new-lodging-cost"></span><br>
-        Flights: 
-          $<span class="new-flights-cost"></span><br>
+  <br>
+  <form class="add-new-trip">
+    <div class="add-new-trip-header"><h3><strong>Add A New Adventure:</strong></h3>
+    </div>
+    <div class="add-new-trip-inputs">
+      <div>
+        <label for="trip-travelers">   Number of Travelers:   </label>
+        <input type="number" class="trip-travelers" id="trip-travelers" placeholder="Number of Travelers" required />
+        <label for="trip-date">   Beginning On Date:   </label>
+        <input type="date" id="trip-date" placeholder="YYYY/MM/DD" required />
       </div>
       <br>
-      <button type="submit" id="add-new-trip-button" class="disable" disabled >Save</button>
-    </form>
+      <div>
+        <label for="trip-duration">   Number of Days:   </label>
+        <input type="number" id="trip-duration" placeholder="Number of Days" required />
+        <label for="trip-destination">   Destination:   </label>
+        <select name="trip-destination" id="trip-destination"></select>  
+      </div>
+    </div>
+    <div class="costs hidden">
+      <strong>ESTIMATED TOTAL COSTS: $<span class="new-total-cost"></span>
+      </strong>
+    </div>
+    <button type="submit" id="add-new-trip-button" class="disable" disabled >Let's Go!</button>
+  </form>
+  <br>
+  <main class="card-wrapper">
+  </main>  
     
-       
-    
-    
+
 <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
 </body>

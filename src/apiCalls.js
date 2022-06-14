@@ -14,6 +14,16 @@ function checkForErrors(response) {
   }
 }
 
+export function fetchToAddTrip(myTrip) {
+  return fetch('http://localhost:3001/api/v1/trips', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(myTrip)
+  })
+    .then(response => checkForErrors(response))
+    .catch(error => console.log(error));
+}
+
 export {
   promise
 }
