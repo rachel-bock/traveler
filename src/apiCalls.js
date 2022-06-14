@@ -21,7 +21,7 @@ export function fetchToAddTrip(myTrip) {
     body: JSON.stringify(myTrip)
   })
     .then(response => checkForErrors(response))
-    .catch(error => console.log(error));
+    // .catch(error => console.log(error));
 }
 
 export {

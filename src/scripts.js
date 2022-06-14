@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /* eslint-disable max-len */
 import './css/styles.css';
 import {
@@ -15,8 +16,17 @@ let individual = {};
 let travelers;
 let trips;
 
+const checkLoginFormFields = () => {
+  if (userName.value !== '' && password.value !== '' ) {
+    loginButton.classList.remove('disable');
+    loginButton.disabled = false;
+  } else {
+    loginButton.classList.add('disable');
+    loginButton.disabled = true;
+  }
+};
 
-const checkNewTripFormFields =  () => {
+ const checkNewTripFormFields =  () => {
   if (newTripDate.value !== '' && newTripDuration.value !== '' && 
     newTripDestination.value !== '' && newTripTravelers.value !== '') {
     newTripSaveButton.classList.remove('disable');
@@ -123,10 +133,11 @@ const getData = () => {
     travelers = new Travelers(data[0]);
     trips = new Trips(data[1]);
     destinations = new Destinations(data[2]);
-    individual.travelerID = travelerID;
-    individual.name = travelers.travelers.find(traveler => travelerID === traveler.id).name;
+    individual.travelerID = parseInt(travelerID);
+    console.log(individual.travelerID);
+    individual.name = travelers.travelers.find(traveler => individual.travelerID === traveler.id).name;
     travelerGreeting.innerText = `Welcome ${individual.name}!`;
-    individual.trips = trips.returnSingleUserTrips(travelerID);    
+    individual.trips = trips.returnSingleUserTrips(individual.travelerID);    
     individual.trips.map(vacation => {
       vacation.destination = destinations.destinations.find(destination => destination.id === vacation.destinationID);
     });
@@ -137,9 +148,9 @@ const getData = () => {
   });
 };
 
-const getRandomID = () => {
-  return Math.floor(Math.random() * 50);
-};
+// const getRandomID = () => {
+//   return Math.floor(Math.random() * 50);
+// };
 
 const populateDestinationsDropdown = () => {
   // <option value="volvo">Volvo</option>
@@ -173,6 +184,20 @@ const processNewTripFormClick = () => {
   newCosts.classList.add("hidden");
 };
 
+const processTravelerLogin = () => {
+  event.preventDefault();
+  
+  // how do I get the traveler ID?
+  // console.log(userName.value.substring(8, 10));  
+  travelerID = userName.value.substring(8, 10);
+
+  loginForm.classList.add('hidden');
+  addNewTripForm.classList.remove("hidden");
+  cardWrapper.classList.remove('hidden');
+  getData();
+
+};
+
 const totalSpentByYear = () => {
   let spent = 0;
   individual.trips.forEach(trip => {
@@ -185,7 +210,8 @@ const totalSpentByYear = () => {
   totalSpent.innerText = spent.toFixed(2);
 };
 
-const travelerID = getRandomID();
+// const travelerID = getRandomID();
+let travelerID;
 
 const updateEstimatedCosts = () => {
   newTotalCost.innerText =  destinations.calculateTripCost(newTripDestination.value, newTripTravelers.value, newTripDuration.value).toFixed(2);
@@ -201,15 +227,21 @@ let newTripSaveButton = document.getElementById('add-new-trip-button');
 let travelerGreeting = document.querySelector('.traveler-greeting');
 let newTotalCost = document.querySelector('.new-total-cost');
 let newCosts = document.querySelector('.costs');
+let userName = document.querySelector('.user-name');
+let password = document.querySelector('.password');
+let loginButton = document.querySelector('#login-button');
+let loginForm = document.querySelector('.login');
+let addNewTripForm = document.querySelector('.add-new-trip');
 
 newTripDate.addEventListener('keyup', checkNewTripFormFields);
 newTripTravelers.addEventListener('keyup', checkNewTripFormFields);
 newTripDuration.addEventListener('keyup', checkNewTripFormFields);
-newTripDestination.addEventListener('input', checkNewTripFormFields);     // trip duration <= 0, form fields invalid entries
+newTripDestination.addEventListener('input', checkNewTripFormFields);     
 newTripSaveButton.addEventListener('click', processNewTripFormClick);
+// trip duration <= 0, form fields invalid entries
 // departure dates in the past, # travelers 0 or less
-// event.preventDefault();                                                 // No valid destination.
-// console.log('What goes here?')
+// No valid destination.
 // data validations?  POST fetch requests.
-
-getData();
+userName.addEventListener('keyup', checkLoginFormFields);
+password.addEventListener('keyup', checkLoginFormFields);
+loginButton.addEventListener('click', processTravelerLogin);
