@@ -134,7 +134,6 @@ const getData = () => {
     trips = new Trips(data[1]);
     destinations = new Destinations(data[2]);
     individual.travelerID = parseInt(travelerID);
-    console.log(individual.travelerID);
     individual.name = travelers.travelers.find(traveler => individual.travelerID === traveler.id).name;
     travelerGreeting.innerText = `Welcome ${individual.name}!`;
     individual.trips = trips.returnSingleUserTrips(individual.travelerID);    
@@ -152,6 +151,21 @@ const getData = () => {
 //   return Math.floor(Math.random() * 50);
 // };
 
+
+const limitCalendarMinDate = () => {
+  let date = new Date();
+  let myMonth;
+  if ((date.getMonth() + 1) < 10) {
+    myMonth = '0' + (date.getMonth() + 1);
+  } else {
+    myMonth = (date.getMonth() + 1);
+  }
+  let today = `${date.getFullYear()}-${myMonth}-${date.getDate()}`;
+  
+  newTripDate.setAttribute("min", today);
+};
+
+
 const populateDestinationsDropdown = () => {
   // <option value="volvo">Volvo</option>
   newTripDestination.innerHTML = '';
@@ -163,6 +177,123 @@ const populateDestinationsDropdown = () => {
       value='${spot.id}'>
         ${spot.destination}
       </option>`
+  });
+};
+
+const prepareSampleTripsView = () => {
+  promise.then(data => {
+    let samples = {
+      "trips": [{
+      "id": 1,
+      "userID": 44,
+      "destinationID": 13,
+      "destination": {
+        "id": 13,
+        "destination": "St. Petersburg, Russia",
+        "estimatedLodgingCostPerDay": 100,
+        "estimatedFlightCostPerPerson": 1100,
+        "image": "https://images.unsplash.com/photo-1556543697-2fb00d31948a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+        "alt": "buildings and people crossing the street carrying shoping bags during the day"
+      },
+      "travelers": 1,
+      "date": "2022/09/16",
+      "duration": 8,
+      "status": "pending",
+      "suggestedActivities": []
+    },
+    {
+      "id": 2,
+      "userID": 35,
+      "destinationID": 25,
+      "destination": {
+        "id": 25,
+        "destination": "New York, New York",
+        "estimatedLodgingCostPerDay": 175,
+        "estimatedFlightCostPerPerson": 200,
+        "image": "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+        "alt": "people crossing the street during the day surrounded by tall buildings and advertisements"
+      },
+      "travelers": 5,
+      "date": "2022/10/04",
+      "duration": 18,
+      "status": "pending",
+      "suggestedActivities": []
+    },
+    {
+      "id": 3,
+      "userID": 3,
+      "destinationID": 22,
+      "destination": {
+        "id": 22,
+        "destination": "Rome, Italy",
+        "estimatedLodgingCostPerDay": 90,
+        "estimatedFlightCostPerPerson": 650,
+        "image": "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+        "alt": "people standing inside a colosseum during the day"
+      },
+      "travelers": 4,
+      "date": "2022/05/22",
+      "duration": 17,
+      "status": "pending",
+      "suggestedActivities": []
+    },
+    {
+      "id": 4,
+      "userID": 43,
+      "destinationID": 14,
+      "destination": {
+        "id": 14,
+        "destination": "Marrakesh, Morocco",
+        "estimatedLodgingCostPerDay": 70,
+        "estimatedFlightCostPerPerson": 830,
+        "image": "https://images.unsplash.com/photo-1517821362941-f7f753200fef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1952&q=80",
+        "alt": "people buying oranges and other fruit from a street vendor"
+      },
+      "travelers": 2,
+      "date": "2022/02/25",
+      "duration": 10,
+      "status": "pending",
+      "suggestedActivities": []
+    },
+    {
+      "id": 5,
+      "userID": 42,
+      "destinationID": 29,
+      "destination": {
+        "id": 29,
+        "destination": "Willemstad, Curaçao",
+        "estimatedLodgingCostPerDay": 80,
+        "estimatedFlightCostPerPerson": 1100,
+        "image": "https://images.unsplash.com/photo-1541748603027-cbfefa3a6c8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1952&q=80",
+        "alt": "brightly colored buildings near body of water"
+      },
+      "travelers": 3,
+      "date": "2022/04/30",
+      "duration": 18,
+      "status": "pending",
+      "suggestedActivities": []
+    },
+    {
+      "id": 6,
+      "userID": 29,
+      "destinationID": 8,
+      "destination": {
+        "id": 8,
+        "destination": "Tokyo, Japan",
+        "estimatedLodgingCostPerDay": 125,
+        "estimatedFlightCostPerPerson": 1000,
+        "image": "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1971&q=80",
+        "alt": "city with people walking in crosswalk and brightly lit shops at night"
+      },
+      "travelers": 3,
+      "date": "2022/06/29",
+      "duration": 9,
+      "status": "pending",
+      "suggestedActivities": []
+    }]};
+    destinations = new Destinations(data[2]);
+    cardWrapper.classList.remove('hidden');
+    displayTrips(samples);
   });
 };
 
@@ -187,16 +318,19 @@ const processNewTripFormClick = () => {
 const processTravelerLogin = () => {
   event.preventDefault();
   
-  // how do I get the traveler ID?
-  // console.log(userName.value.substring(8, 10));  
-  travelerID = userName.value.substring(8, 10);
-
-  loginForm.classList.add('hidden');
-  addNewTripForm.classList.remove("hidden");
-  cardWrapper.classList.remove('hidden');
-  getData();
-
-};
+  if (userName.value.length === 10 && userName.value.includes('traveler') && password.value === 'travel') {
+    travelerID = userName.value.substring(8, 10);
+    loginForm.classList.add('hidden');
+    addNewTripForm.classList.remove("hidden");
+    spentStatement.classList.remove("hidden");
+    cardWrapper.innerHTML = '';
+    getData();  
+  } else {
+    userName.value = "";
+    password.value = "";
+    alert("User login not recognized.  Please contact your agent for help.");
+  } 
+ };
 
 const totalSpentByYear = () => {
   let spent = 0;
@@ -232,6 +366,7 @@ let password = document.querySelector('.password');
 let loginButton = document.querySelector('#login-button');
 let loginForm = document.querySelector('.login');
 let addNewTripForm = document.querySelector('.add-new-trip');
+let spentStatement = document.querySelector('.spent');
 
 newTripDate.addEventListener('keyup', checkNewTripFormFields);
 newTripTravelers.addEventListener('keyup', checkNewTripFormFields);
@@ -245,3 +380,6 @@ newTripSaveButton.addEventListener('click', processNewTripFormClick);
 userName.addEventListener('keyup', checkLoginFormFields);
 password.addEventListener('keyup', checkLoginFormFields);
 loginButton.addEventListener('click', processTravelerLogin);
+
+prepareSampleTripsView();
+limitCalendarMinDate();
