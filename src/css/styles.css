@@ -36,8 +36,8 @@ h1 {
 .banner {
   height: 75%;
 
-  /* with flight destination */
   background-image: url('../images/map-banner2.png');
+  background-position: center;
 
   background-size: cover;  
 }
