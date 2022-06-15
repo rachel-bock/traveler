@@ -4,10 +4,10 @@
   - [Abstract](#abstract)
   - [Code Architecture](#code-architecture)
   - [Illustrations](#illustrations)
-  - [Install + Setup](#set-up)
+  - [Install + Setup](#install-+-set-up)
   - [Contributors](#contributors)
   - [Wins](#wins)
-  - [Challenges + Improvements](#challenges-+-Improvements)
+  - [Challenges + Improvements](#challenges-+-improvements)
   - [Project Specs](#project-specs)
 
 ## Abstract
