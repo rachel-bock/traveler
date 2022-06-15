@@ -11,7 +11,7 @@
   - [Project Specs](#project-specs)
 
 ## Abstract
-  - Traveler is an application where travelers can plan their adventures.  The site shows the cost per trip and breaks down the cost into lodging and flight costs.  The site also shows the total cost for trips during the year 2022.  In addition, the site allows them to add new trips that are then shown as pending adventures.  This project was developed using Test-Driven Development and accessibility principles.  It also incorporated skills such as working with an API and making fetch requests to and from a server.
+  - Traveler is an application where travelers can plan their adventures.  The site shows the cost per trip and breaks down the cost into lodging and flight costs.  The site also shows the total cost for trips during the year 2022.  In addition, the site allows them to add new trips that are then shown as pending adventures.  This project was developed using Test-Driven Development (using Mocha and Chai) and accessibility principles.  It also incorporated skills such as working with an API and making fetch requests to and from a server. 
 
 ## Code Architecture
   - HTML / CSS / JavaScript
@@ -33,7 +33,7 @@
       `npm install`
   3. Run Traveler with `npm start`
   4. With both the server and the application running, visit `http://localhost:8080/` in your browser.
-  5. To log in, use a username from `traveler1` to `traveler50` with the password `travel`.
+  5. To log in, use a username from `traveler01` to `traveler50` with the password `travel`.
 
 ## Contributors
   - [Rachel Bock](https://www.linkedin.com/in/rachelbock)
