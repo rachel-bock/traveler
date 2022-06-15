@@ -4,10 +4,10 @@
   - [Abstract](#abstract)
   - [Code Architecture](#code-architecture)
   - [Illustrations](#illustrations)
-  - [Install + Setup](#install-+-set-up)
+  - [Installation](#install)
   - [Contributors](#contributors)
   - [Wins](#wins)
-  - [Challenges + Improvements](#challenges-+-improvements)
+  - [Challenges](#challenges)
   - [Project Specs](#project-specs)
 
 ## Abstract
@@ -20,7 +20,7 @@
 
 ![Traveler, The Travel Tracker](/src/images/travel-tracker.gif)
 
-## Installation and Setup:
+## Installation
 **To navigate the website live, a server download is required.**
   1. Follow the instructions to download and install the API [here](https://github.com/turingschool-examples/travel-tracker-api)
   2. Once you've installed the API, run the server with `npm start`
@@ -42,9 +42,10 @@
   - This was one of the most difficult projects to date.  I felt like it stretched my abilities more than other projects in the past.  For example, having the user login was a new feature that I was able to implement.
   - Accessibility was addressed in this project as well.  For example, even though there is no input necessary on the trip cards, a user can tab through the trip cards to view each one without using the mouse.
 
-## Challenges + Improvements
+## Challenges
   - There is room for more error handling and input validation.  For example, as it stands now, the form that allows users to add a new adventure will accept negative numbers for travelers and trip duration.  This is a future functionality to be addressed.
   - Future improvements also could include sorting the trips into past, present, current and future trips.
+  - The current application only calculates the total spent for the year 2022.  This would need to be updated each year.
 
 ## Project Specs
   - The project spec & rubric can be found [here](https://frontend.turing.edu/projects/travel-tracker.html).
