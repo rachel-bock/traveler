@@ -9,6 +9,7 @@
   - [Wins](#wins)
   - [Challenges](#challenges)
   - [Project Specs](#project-specs)
+  - [Acknowledgements](#acknowledgements)
 
 ## Abstract
   - Traveler is an application where travelers can plan their adventures.  The site shows the cost per trip and breaks down the cost into lodging and flight costs.  The site also shows the total cost for trips during the year 2022.  In addition, the site allows them to add new trips that are then shown as pending adventures.  This project was developed using Test-Driven Development (using Mocha and Chai) and accessibility principles.  It also incorporated skills such as working with an API and making fetch requests to and from a server. 
@@ -49,3 +50,6 @@
 
 ## Project Specs
   - The project spec & rubric can be found [here](https://frontend.turing.edu/projects/travel-tracker.html).
+
+## Acknowledgements
+  - I could not have done this project without the help and direction from [Artan Myrtolli](https://www.linkedin.com/in/artan-myrtolli-567411119/).
