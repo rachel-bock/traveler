@@ -52,4 +52,4 @@
   - The project spec & rubric can be found [here](https://frontend.turing.edu/projects/travel-tracker.html).
 
 ## Acknowledgements
-  - I could not have done this project without the help and direction from [Artan Myrtolli](https://www.linkedin.com/in/artan-myrtolli-567411119/).
+  - I could not have done this project without the help and direction from [Artan Myrtolli](https://www.linkedin.com/in/artan-myrtolli-567411119/) and [Nate Ewert-Krocker](https://www.linkedin.com/in/newertkrocker/).
