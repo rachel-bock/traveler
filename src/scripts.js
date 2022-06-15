@@ -68,7 +68,7 @@ const displayTrips = (tripList) => {
 
   tripList.trips.forEach(trip => {
     cardWrapper.innerHTML += `
-    <div class="trip-card">
+    <div class="trip-card" tabindex='0'>
       <div class="card-img">
         <img src='${trip.destination.image}' alt='${trip.destination.alt}' />
         <span class="trip-heading">
