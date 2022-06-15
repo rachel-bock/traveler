@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const sampleDestinations = {
   "destinations": [{
     "id": 1,

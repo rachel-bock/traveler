@@ -13,11 +13,19 @@
     </div>
     <section class="heading-section">
       <h1><span class="traveler-greeting">Welcome!</span></h1>
-      <div>Total Spent This Year: $<span class="total-spent"></span></div>
+      <div class="spent hidden">Total Spent This Year: $<span class="total-spent"></span></div>
     </section>
   </nav>
   <br>
-  <form class="add-new-trip">
+  <form class="login">
+    <label for="user-name">User Name: </label>
+    <input type="text" class="user-name" id="user-name" required />
+    <br>
+    <label for="password">Password: </label>
+    <input type="password" class="password" id="password" required />
+    <button type="submit" id="login-button" class="disable" disabled >Let's Go!</button>
+  </form>
+  <form class="add-new-trip hidden">
     <div class="add-new-trip-header"><h3><strong>Add A New Adventure:</strong></h3>
     </div>
     <div class="add-new-trip-inputs">
@@ -42,7 +50,7 @@
     <button type="submit" id="add-new-trip-button" class="disable" disabled >Let's Go!</button>
   </form>
   <br>
-  <main class="card-wrapper">
+  <main class="card-wrapper hidden">
   </main>  
     
 
