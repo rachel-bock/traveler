@@ -12,7 +12,6 @@ import './images/map-banner2.png';
 
 let destinations;
 let individual = {};
-// let today;
 let travelers;
 let trips;
 
@@ -48,15 +47,8 @@ const clearNewTripForm = () => {
 
 const createPOSTDataPackage = () => {
   let output = {};
-  // console.log("Date: ", newTripDate.value);
-  // console.log("Destination: " , newTripDestination.value);
-  // console.log("Duration: ", newTripDuration.value);
-  // console.log("Travelers: ", newTripTravelers.value);
-  // console.log("TravelerID: ", travelerID);
-
   let myDate = newTripDate.value.split("-");
   myDate = myDate.join('/');
-
   output.id = Date.now();
   output.userID = travelerID;
   output.destinationID = parseInt(newTripDestination.value);
@@ -65,7 +57,6 @@ const createPOSTDataPackage = () => {
   output.duration = parseInt(newTripDuration.value);
   output.status = 'pending';
   output.suggestedActivities = [];
-  // console.log(output);
   return output;
 };
 
@@ -78,7 +69,7 @@ const displayTrips = (tripList) => {
 
   tripList.trips.forEach(trip => {
     cardWrapper.innerHTML += `
-    <div class="trip-card">
+    <div class="trip-card" tabindex="0">
       <div class="card-img">
         <img src='${trip.destination.image}' alt='${trip.destination.alt}' />
         <span class="trip-heading">
@@ -94,7 +85,7 @@ const displayTrips = (tripList) => {
         People Traveling: 
         <div class="people-traveling">
           <h4>${trip.travelers}</h4>
-        </div> <!-- closes people-traveling -->
+        </div> 
         <br>
         Travel Beginning On: <br>
         <h4>${trip.date}</h4>
@@ -102,7 +93,7 @@ const displayTrips = (tripList) => {
         Travel Duration: <br>
         <div class="travel-duration">
           <h4>${trip.duration} days</h4>
-        </div> <!-- closes travel-duration -->
+        </div> 
         <br>
         <div class="costs">
           <strong>TOTAL COSTS: $
@@ -123,8 +114,8 @@ const displayTrips = (tripList) => {
                 trip.destinationID, trip.travelers)).toFixed(2)}
           </span><br>
         </div>
-      </div> <!-- closes card-info -->
-    </div><!-- closes class="card add-new-trip"   -->`    
+      </div>
+    </div>`    
   });  
 };
 
@@ -146,11 +137,6 @@ const getData = () => {
     totalSpentByYear();
   });
 };
-
-// const getRandomID = () => {
-//   return Math.floor(Math.random() * 50);
-// };
-
 
 const limitCalendarMinDate = () => {
   let date = new Date();
@@ -318,7 +304,7 @@ const processNewTripFormClick = () => {
 const processTravelerLogin = () => {
   event.preventDefault();
   
-  if (userName.value.length === 10 && userName.value.includes('traveler') && password.value === 'travel') {
+  if (userName.value.length === 10 && userName.value.includes('traveler') && password.value === 'travel' && parseInt(userName.value.substring(8, 10)) <= 50) {
     travelerID = userName.value.substring(8, 10);
     loginForm.classList.add('hidden');
     addNewTripForm.classList.remove("hidden");
@@ -344,7 +330,6 @@ const totalSpentByYear = () => {
   totalSpent.innerText = spent.toFixed(2);
 };
 
-// const travelerID = getRandomID();
 let travelerID;
 
 const updateEstimatedCosts = () => {
@@ -373,13 +358,17 @@ newTripTravelers.addEventListener('keyup', checkNewTripFormFields);
 newTripDuration.addEventListener('keyup', checkNewTripFormFields);
 newTripDestination.addEventListener('input', checkNewTripFormFields);     
 newTripSaveButton.addEventListener('click', processNewTripFormClick);
-// trip duration <= 0, form fields invalid entries
-// departure dates in the past, # travelers 0 or less
-// No valid destination.
-// data validations?  POST fetch requests.
 userName.addEventListener('keyup', checkLoginFormFields);
 password.addEventListener('keyup', checkLoginFormFields);
 loginButton.addEventListener('click', processTravelerLogin);
 
 prepareSampleTripsView();
 limitCalendarMinDate();
+
+
+
+
+// trip duration <= 0, form fields invalid entries
+// departure dates in the past, # travelers 0 or less
+// No valid destination.
+// data validations?  POST fetch requests.

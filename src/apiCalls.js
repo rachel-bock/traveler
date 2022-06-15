@@ -1,6 +1,7 @@
 export function fetchData(type) {
   return fetch(`http://localhost:3001/api/v1/${type}`)
-    .then(response => checkForErrors(response));
+    .then(response => checkForErrors(response))
+    .catch(error => console.log(error));
 }
 
 let promise = Promise.all([fetchData('travelers'), fetchData('trips'), fetchData('destinations')]);
@@ -21,7 +22,7 @@ export function fetchToAddTrip(myTrip) {
     body: JSON.stringify(myTrip)
   })
     .then(response => checkForErrors(response))
-    // .catch(error => console.log(error));
+    .catch(error => console.log(error));
 }
 
 export {
