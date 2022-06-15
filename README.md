@@ -4,7 +4,7 @@
   - [Abstract](#abstract)
   - [Code Architecture](#code-architecture)
   - [Illustrations](#illustrations)
-  - [Installation](#install)
+  - [Installation](#installation)
   - [Contributors](#contributors)
   - [Wins](#wins)
   - [Challenges](#challenges)
